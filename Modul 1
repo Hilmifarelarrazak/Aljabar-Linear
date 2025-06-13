@@ -1,0 +1,65 @@
+Analisis Source Code perbaris:
+
+print ("--"*30)
+Mencetak karakter "--" sebanyak 30 kali.
+Hasilnya: ------------------------------------------------------------
+Tujuannya untuk membuat garis pembatas di output terminal.
+matriks_list = [[-2,1,-1],
+                             [-3,-1,2],
+                             [-2,1,2]]
+Mendefinisikan sebuah list 2 dimensi (list dalam list).
+matriks_list terdiri dari 3 baris dan 3 kolom (matriks 3x3).
+Nilainya disusun dalam bentuk baris dan kolom:
+Baris 1: -2, 1, -1
+Baris 2: -3, -1, 2
+Baris 3: -2, 1, 2
+print("Ini adalah matriks dari list:")
+Mencetak teks sebagai judul atau penjelasan untuk bagian selanjutnya.
+print (matriks_list)
+Mencetak isi dari matriks_list.
+Output berupa tampilan list Python:
+[[-2, 1, -1], [-3, -1, 2], [-2, 1, 2]]
+print ("\nini adalah elemen dari matriks list:")
+Mencetak penjelasan bahwa setelah ini akan ditampilkan elemen per elemen.
+\n memberi baris kosong sebelum teks.
+for i in range (len(matriks_list)):
+len(matriks_list) menghasilkan 3, karena ada 3 baris.
+Loop luar ini berjalan 3 kali (i = 0, 1, 2), untuk setiap baris.
+    for j in range (len(matriks_list[i])):
+Untuk setiap baris i, hitung panjang (jumlah kolom).
+Loop ini juga berjalan 3 kali untuk setiap baris (j = 0, 1, 2).
+        print (f"Baris ke-{i+1} elemen ke-{j+1} adalah {matriks_list[i][j]}")
+i+1 dan j+1 digunakan agar nomor baris dan kolom dimulai dari 1.
+matriks_list[i][j] mengambil nilai di posisi [i][j].
+Contoh output: Baris ke-1 elemen ke-1 adalah -2
+print ("--"*30)
+Cetak lagi garis pemisah seperti sebelumnya.
+import numpy as np
+Mengimpor library NumPy dan memberi nama pendek np.
+NumPy berguna untuk operasi array dan aljabar linear.
+matriks_array = np.array([[-2,1,-1],
+                                                    [-3,-1,2],
+                                                    [-2,1,2]])
+Membuat array 2 dimensi (ndarray) menggunakan np.array().
+Isi array sama persis dengan matriks_list.
+matriks_array sekarang adalah array NumPy 3x3.
+print("Ini adalah matriks array: ")
+Menampilkan penjelasan sebelum mencetak array.
+print (matriks_array)
+Mencetak isi dari matriks_array.
+Format tampilannya lebih rapi, seperti:
+[[-2  1 -1]
+ [-3 -1  2]
+ [-2  1  2]]
+print ("\nini adalah elemen dari matriks array:")
+Memberi tahu bahwa akan ditampilkan elemen array satu per satu.
+for i in range (len(matriks_array)):
+Sama seperti sebelumnya, len(matriks_array) adalah 3.
+i akan berisi indeks baris (0 sampai 2).
+    for j in range (len(matriks_array[i])):
+Loop dalam membaca kolom dari baris ke-i.
+        print (f"Baris ke-{i+1} elemen ke-{j+1} adalah {matriks_array[i][j]}")
+Menampilkan posisi dan isi elemen di [i][j] dari matriks_array
+
+
+ 

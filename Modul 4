@@ -1,0 +1,306 @@
+# Analisis Data
+
+1)	SPLDV
+•	Numpy
+
+import numpy as np
+
+Mengimpor pustaka numpy dan memberikan alias np.
+import matplotlib.pyplot as plt
+
+         Mengimpor modul pyplot dari pustaka matplotlib dan memberi alias plt
+matriks_a = np.array([[2,3],
+                                           [1-1]])
+
+Membuat list bersarang yang mewakili matriks 2x2, kemudian mengubahnya menjadi array numpy dan menyimpannya ke dalam variabel matriks_A.
+
+matriks_b = np.array([7,1])
+
+Membuat list yang mewakili matriks 1x2, kemudian mengubahnya menjadi array numpy dan menyimpannya ke dalam variabel matriks_B.
+
+hasil = np.linalg.solve (Matriks_A,Matriks_B)
+
+Melakukan penyelesaian dr sistem persamaan linear antara nilai dari Variabel Matriks_A dan Matriks_B dengan menggunakan fungsi dari numpy yaitu np.linalg.solve(). yang digunakan untuk mencari solusi dari sistem persamaan linear dalam bentuk matriks. Kemudian menyimpannya ke dalam variabel hasil.
+
+print ("Hasil SPLDV adalah:")
+
+Mencetak teks “Hasil SPLDV adalah”
+
+print ("x =",hasil[0],"y =",hasil[1])
+
+Menampilkan teks “x =” diikuti oleh nilai dari indeks ke-0 pada array hasil, serta teks “y =” diikuti oleh nilai dari indeks ke-1
+x = np.linspace(0, 5, 100)
+
+Membuat 100 titik data dari 0 hingga 5 untuk sumbu x. kemudian disempan ke variable x
+y1 = (7 - 2 * x) / 3
+
+Mengurangi 7 dengan hasil kali nilai variable x dengan 2 ,kemudian hasilnya dibagi 3 dan dimasukkan kedalam variable y1
+y2 = x - 1
+
+Mengurangi nilai variable x dengan – 1 kemudian disimpan di variable y2
+plt.plot(x, y1, label='2x + 3y = 7')
+
+Menggambar garis pertama (persamaan 1) menggunakan nilai-nilai x dan y1. Diberi label untuk legend.
+plt.plot(x, y2, label='x - y = 1')
+
+Menggambar garis kedua (persamaan 2) menggunakan x dan y2. Diberi label juga.
+
+plt.plot(hasil[0], hasil[1], 'ro', label='Solusi')
+
+Menandai titik potong (solusi) dari kedua garis sebagai titik merah 'ro' di koordinat (x, y) hasil solusi.
+plt.xlabel('x')
+
+Memberi label pada sumbu horizontal (x) di grafik.
+plt.ylabel('y')
+
+Memberi label pada sumbu vertikal (y).
+plt.title('Visualisasi SPLDV')
+
+Menambahkan judul di atas grafik: Visualisasi SPLDV.
+plt.legend()
+
+Menampilkan keterangan (label) dari masing-masing garis dan titik solusi.
+plt.grid(True)
+
+Menampilkan garis bantu (grid) untuk memudahkan membaca koordinat grafik.
+plt.show()
+
+Menampilkan grafik dalam jendela visual interaktif.
+•	Sympy
+
+import sympy as sp
+
+Mengimpor pustaka sympy dan memberikan alias sp.
+import matplotlib.pyplot as plt
+
+         Mengimpor modul pyplot dari pustaka matplotlib dan memberi alias plt
+x, y = sp.symbols('x y')
+
+Mendefinisikan dua variabel simbolik x dan y yang akan digunakan dalam persamaan.
+matriks_a = sp.Matriks([[2,3],
+                                           [1-1]])
+
+Membuat list bersarang yang mewakili matriks 2x2, kemudian mengubahnya menjadi objek matriks dan menyimpannya ke dalam variabel matriks_A.
+
+matriks_B = sp.Matriks([7,1])
+
+Membuat list yang mewakili matriks 1x2, kemudian mengubahnya menjadi objek matriks dan menyimpannya ke dalam variabel matriks_B.
+
+hasil = Matriks_A,.solve (Matriks_B)
+
+Melakukan penyelesaian sistem persamaan linear antara nilai dari Variabel Matriks_A dan Matriks_B dengan menggunakan fungsi dari sympy yaitu .solve(), yang digunakan untuk mencari solusi dari sistem persamaan linear dalam bentuk matriks. Maupun umum Kemudian menyimpannya ke dalam variabel hasil.
+
+print ("Hasil SPLDV adalah:")
+
+Mencetak teks “Hasil SPLDV adalah”
+
+print ("x =",hasil[0],"y =",hasil[1])
+
+Menampilkan teks “x =” diikuti oleh nilai dari indeks ke-0 pada array hasil, serta teks “y =” diikuti oleh nilai dari indeks ke-1
+y1_expr = sp.solve(2*x + 3*y - 7, y)[0]
+
+Mengubah persamaan pertama 2x+3y=72x + 3y = 72x+3y=7 menjadi y=f(x)y = f(x)y=f(x), dan menyimpan bentuk tersebut sebagai y1_expr.
+y2_expr = sp.solve(x - y - 1, y)[0]
+
+Mengubah persamaan kedua x−y=1x - y = 1x−y=1 menjadi y=x−1y = x - 1y=x−1, dan menyimpannya sebagai y2_expr.
+x_vals = [i for i in range(0, 6)]
+
+Membuat daftar nilai x dari 0 hingga 5 untuk digunakan dalam menggambar grafik.
+y1_vals = [y1_expr.subs(x, val) for val in x_vals]
+
+Menghitung nilai y dari persamaan pertama untuk setiap nilai x di x_vals, lalu menyimpan dalam y1_vals.
+y2_vals = [y2_expr.subs(x, val) for val in x_vals]
+
+Menghitung nilai y dari persamaan kedua untuk setiap x di x_vals, lalu menyimpan hasilnya dalam y2_vals.
+plt.plot(x_vals, y1_vals, label='2x + 3y = 7')
+
+Menggambar garis pertama berdasarkan pasangan (x, y) dari x_vals dan y1_vals, lalu memberi label.
+plt.plot(x_vals, y2_vals, label='x - y = 1')
+
+Menggambar garis kedua berdasarkan x_vals dan y2_vals, juga diberi label.
+sol_x = float(hasil[0])
+
+Mengonversi hasil solusi x menjadi bilangan desimal (float) agar bisa digunakan dalam matplotlib.
+sol_y = float(hasil[1])
+
+Mengonversi hasil solusi y menjadi bilangan desimal (float).
+plt.plot(sol_x, sol_y, 'ro', label='Solusi')
+
+Menampilkan titik solusi sebagai titik merah 'ro' pada koordinat (sol_x, sol_y).
+plt.xlabel('x')
+
+Menambahkan label "x" di sumbu horizontal grafik.
+plt.ylabel('y')
+
+Menambahkan label "y" di sumbu vertikal grafik.
+plt.title('Visualisasi SPLDV')
+
+Memberi judul grafik: Visualisasi SPLDV.
+plt.legend()
+
+Menampilkan legenda (keterangan) di grafik untuk masing-masing garis dan titik.
+plt.grid(True)
+
+Mengaktifkan grid (garis bantu) agar grafik lebih mudah dibaca.
+plt.show()
+
+Menampilkan grafik secara interaktif.
+
+2)	SPLTV
+•	Numpy
+
+import numpy as np
+
+Mengimpor pustaka numpy dan memberikan alias np.
+import matplotlib.pyplot as plt
+
+         Mengimpor modul pyplot dari pustaka matplotlib dan memberi alias plt
+from mpl_toolkits.mplot3d import Axes3D
+
+Mengimpor toolkit untuk mendukung pembuatan grafik 3 dimensi (3D) di matplotlib.
+
+matriks_a = np.array([[1,2,1],
+                                           [3,-1,2],
+                                           [-2,3,-1]])
+
+Membuat list bersarang yang mewakili matriks 3x3, kemudian mengubahnya menjadi array numpy dan menyimpannya ke dalam variabel matriks_A.
+
+matriks_b = np.array([10, 5,-9])
+
+Membuat list yang mewakili matriks 1x2, kemudian mengubahnya menjadi array numpy dan menyimpannya ke dalam variabel matriks_B.
+
+hasil = np.linalg.solve (Matriks_A,Matriks_B)
+
+Menyelesaikan sistem persamaan a⋅[x,y,z]T¬¬ =b menggunakan numpy.linalg.solve, hasilnya disimpan dalam hasil.
+print("\nSoal 1\nx + 2y + z = 10\n3x - y + 2z = 5\n-2x + 3y - z = -9\n")
+
+Mencetak teks soal SPLTV sebagai informasi untuk pengguna.
+print("Solusi Numpy: ""x {=", hasil[0], "} y ={", hasil[1], "}, z ={", hasil[2])
+
+Mencetak solusi hasil dari SPLTV: nilai x, y, dan z dari array hasil.
+fig = plt.figure()
+
+Membuat objek figure untuk menampung grafik 3D.
+ax = fig.add_subplot(111, projection='3d')
+
+Menambahkan subplot ke dalam figure dengan proyeksi 3D (tiga dimensi).
+x = np.linspace(-10, 10, 100)
+
+Membuat array x yang terdiri dari 100 nilai mulai dari -10 sampai 10 (digunakan untuk plot permukaan).
+y = np.linspace(-10, 10, 100)
+
+            Membuat array y dengan 100 nilai dari -10 sampai 10, mirip dengan x.
+X, Y = np.meshgrid(x, y)
+
+Membuat grid koordinat 2D dari x dan y yang akan digunakan untuk menghitung permukaan Z.
+Z1 = 10 - X - 2 * Y
+
+Menghitung nilai Z1 dari persamaan pertama yang diubah menjadi 
+z = 10 − x − 2y
+ax.plot_surface(X, Y, Z1, alpha=0.5, color='yellow')
+
+Menggambar permukaan 3D dari persamaan pertama dengan warna kuning dan transparansi 50%.
+Z2 = (5 - 3 * X + Y) / 2
+
+Menghitung nilai Z2 dari persamaan kedua yang diubah menjadi z=(5 - 3 * X + Y) / 2
+ax.plot_surface(X, Y, Z2, alpha=0.5, color='red')
+
+Menggambar permukaan 3D dari persamaan kedua dengan warna merah.
+Z3 = (-9 + 2 * X - 3 * Y)
+
+Menghitung nilai Z3 dari persamaan ketiga yang diubah menjadi Z = (-9 + 2 * X - 3 * Y)
+ax.plot_surface(X, Y, Z3, alpha=0.5, color='green')
+
+Menggambar permukaan 3D dari persamaan ketiga dengan warna hijau.
+ax.set_xlabel('X')
+
+Memberi label "X" pada sumbu X grafik 3D.
+ax.set_ylabel('Y')
+
+Memberi label "Y" pada sumbu Y grafik 3D.
+ax.set_zlabel('Z')
+
+Memberi label "Z" pada sumbu Z grafik 3D.
+plt.title("Visualisasi SPL")
+
+Memberi judul pada grafik: "Visualisasi SPL".
+plt.show()
+
+Menampilkan grafik 3D interaktif yang telah dibuat.
+•	Sympy
+
+import numpy as np
+
+Mengimpor pustaka numpy dan memberikan alias np.
+import matplotlib.pyplot as plt
+
+         Mengimpor modul pyplot dari pustaka matplotlib dan memberi alias plt
+from mpl_toolkits.mplot3d import Axes3D
+
+Mengimpor toolkit untuk mendukung pembuatan grafik 3 dimensi (3D) di matplotlib.
+
+x, y, z = sp.symbols('x y z')
+
+Mendefinisikan tiga simbol aljabar x, y, dan z menggunakan sympy.
+solusi2 = sp.solve([x + 2*y + z - 10, 3*x - y + 2*z - 5, -2*x + 3*y - z + 9], (x, y, z))
+
+Menyelesaikan sistem persamaan linear tiga variabel secara simbolik dengan sympy.solve().
+print("\nsoal 2.\nx + 2y + z = 10\n3x - y + 2z = 5\n-2x + 3y - z = -9\njawaban")
+
+Mencetak teks soal SPLTV ke layar sebagai pengantar agar pembaca tahu soal yang sedang dikerjakan.
+print(solusi2)
+
+Mencetak nilai dari variable solusi
+x = np.linspace(-10, 10, 100)
+
+Membuat array x dengan 100 titik dari -10 hingga 10. Ini digunakan untuk membentuk bidang 3D.
+y = np.linspace(-10, 10, 100)
+
+      Membuat array y dengan 100 titik dari -10 hingga 10, sepasang dengan x.
+X, Y = np.meshgrid(x, y)
+
+Menghasilkan grid 2D dari nilai x dan y untuk menghitung permukaan bidang z.
+Z1 = 10 - X - 2 * Y
+
+Menghitung nilai z dari persamaan pertama 10−x−2*y, lalu disimpan di Z1.
+Z2 = (5 - 3 * X + Y) / 2
+
+Menghitung nilai z dari persamaan kedua Z2 = (5 - 3 * X + Y) / 2 , lalu disimpan di Z2
+Z3 = -9 + 2 * X - 3 * Y
+
+Menghitung nilai z dari persamaan ketiga -9 + 2 * X - 3 * Y , lalu disimpan di Z3
+fig = plt.figure()
+
+Membuat objek figure dari matplotlib untuk menampung grafik 3D.
+ax = fig.add_subplot(111, projection='3d')
+
+Menambahkan satu subplot (area gambar) ke figure dengan proyeksi 3 dimensi ('3d').
+ax.plot_surface(X, Y, Z1, alpha=0.5, color='yellow', label='x + 2y + z = 10')
+
+Menggambar permukaan bidang pertama dari persamaan pertama dengan warna kuning dan transparansi 50%.
+ax.plot_surface(X, Y, Z2, alpha=0.5, color='red', label='3x - y + 2z = 5')
+
+Menggambar permukaan bidang kedua dari persamaan kedua dengan warna merah.
+ax.plot_surface(X, Y, Z3, alpha=0.5, color='green', label='-2x + 3y - z = -9')
+
+Menggambar permukaan bidang ketiga dari persamaan ketiga dengan warna hijau.
+ax.set_xlabel('X')
+
+Memberi label "X" pada sumbu X grafik 3D.
+ax.set_ylabel('Y')
+
+Memberi label "Y" pada sumbu Y grafik 3D.
+ax.set_zlabel('Z')
+
+Memberi label "Z" pada sumbu Z grafik 3D.
+plt.title("Visualisasi Sistem Persamaan Linear 3 Variabel")
+
+Memberi judul pad grafik: "Visualisasi Sistem Persamaan Linear 3 Variabel".
+ax.legend()
+
+Menambahkan legenda ke grafik 3D agar label bidang bisa terbaca, meskipun pada plot_surface label sebenarnya tidak langsung ditampilkan—untuk menampilkannya benar-benar butuh pendekatan lain.
+plt.show()
+
+Menampilkan keseluruhan grafik SPLTV dalam tampilan interaktif.
+
+
